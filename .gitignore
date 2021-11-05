@@ -31,6 +31,9 @@
 .pub/
 /build/
 
+# Secrets and API keys
+lib/utilities/secrets.dart
+
 # Web related
 lib/generated_plugin_registrant.dart
 
