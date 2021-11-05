@@ -24,6 +24,26 @@ class WeatherModel {
     return weatherData;
   }
 
+  String getBackgroundImage(int condition) {
+    if (condition < 300) {
+      return 'background_thunder.jpg';
+    } else if (condition < 400) {
+      return 'background_light_rain.jpg';
+    } else if (condition < 600) {
+      return 'background_heavy_rain.jpeg️';
+    } else if (condition < 700) {
+      return 'background_snow.jpg️';
+    } else if (condition < 800) {
+      return 'background_fog.jpg';
+    } else if (condition == 800) {
+      return 'background_clear.jpg';
+    } else if (condition <= 804) {
+      return 'background_clouds.jpg';
+    } else {
+      return 'background_rainbow.jpg‍';
+    }
+  }
+
   String getWeatherIcon(int condition) {
     if (condition < 300) {
       return '🌩';

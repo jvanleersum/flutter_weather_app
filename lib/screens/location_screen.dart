@@ -15,6 +15,7 @@ class LocationScreen extends StatefulWidget {
 class _LocationScreenState extends State<LocationScreen> {
   WeatherModel weatherModel = WeatherModel();
   late int temperature;
+  late String backgroundImage;
   late String weatherIcon;
   late String cityName;
   late String weatherMessage;
@@ -32,12 +33,14 @@ class _LocationScreenState extends State<LocationScreen> {
         temperature = 0;
         weatherIcon = 'Error';
         weatherMessage = 'Unable to get weather data';
+        backgroundImage = 'location_background.jpg';
         cityName = '';
         return;
       }
       dynamic temp = weatherData['main']['temp'];
       temperature = temp.toInt();
       var condition = weatherData['weather'][0]['id'];
+      backgroundImage = weatherModel.getBackgroundImage(condition);
       weatherIcon = weatherModel.getWeatherIcon(condition);
       cityName = weatherData['name'];
       weatherMessage = weatherModel.getMessage(temperature);
@@ -50,7 +53,7 @@ class _LocationScreenState extends State<LocationScreen> {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('images/location_background.jpg'),
+            image: AssetImage('images/$backgroundImage'),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
                 Colors.white.withOpacity(0.8), BlendMode.dstATop),
