@@ -30,6 +30,7 @@
 .pub-cache/
 .pub/
 /build/
+/images/
 
 # Secrets and API keys
 lib/auth/secrets.dart
